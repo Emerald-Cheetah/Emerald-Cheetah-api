@@ -41,7 +41,7 @@ namespace Emerald.Cheetah.Api.Controllers
           item.Id = id;
           item.AddRating(rating);
 
-          return Ok(Item);
+          return Ok(item);
         }
 
         [HttpPut("{id:int}")]
