@@ -40,8 +40,14 @@ namespace Emerald.Cheetah.Api.Controllers
           var item = new Item("Shirt", "Ohio State shirt.", "Nike", 29.99m);
           item.Id = id;
           item.AddRating(rating);
-          
+
           return Ok(Item);
+        }
+
+        [HttpPut("{id:int}")]
+        public IActionResult Put(int id, Item item)
+        {
+          return NoContent();
         }
     }
 
