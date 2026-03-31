@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="Emerald.Cheetah.Api/Emerald.Cheetah.Api.csproj" />
+  <Project Path="Emerald.Cheetah.Data/Emerald.Cheetah.Data.csproj" />
   <Project Path="Emerald.Cheetah.Domain/Emerald.Cheetah.Domain.csproj" />
 </Solution>
