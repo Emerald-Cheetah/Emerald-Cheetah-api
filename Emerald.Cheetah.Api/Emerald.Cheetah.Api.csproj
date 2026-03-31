@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.1.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Emerald.Cheetah.Domain\Emerald.Cheetah.Domain.csproj" />
+    <ProjectReference Include="..\Emerald.Cheetah.Data\Emerald.Cheetah.Data.csproj" />
   </ItemGroup>
 
 </Project>
