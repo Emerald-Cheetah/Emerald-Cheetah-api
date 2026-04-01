@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Emerald.Cheetah.Domain.Catalog;
 using Emerald.Cheetah.Data;
@@ -17,14 +18,18 @@ namespace Emerald.Cheetah.Api.Controllers
         [HttpGet]
         public IActionResult GetItems()
         {
-            return Ok(_db.Items);
+            return Ok(_db.Items.Include(i => i.Ratings));
         }
 
         [HttpGet("{id:int}")]
         public IActionResult GetItem(int id)
         {
-            var item = new Item("Shirt", "Ohio State shirt.", "Nike", 29.99m);
-            item.Id = id;
+            var item = _db.Items.Find(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
 
             return Ok(item);
         }
@@ -32,29 +37,66 @@ namespace Emerald.Cheetah.Api.Controllers
         [HttpPost]
         public IActionResult Post(Item item)
         {
-          return Created("/catalog/42", item);
+            _db.Items.Add(item);
+            _db.SaveChanges();
+            return Created($"/catalog/{item.Id}", item);
         }
 
         [HttpPost("{id:int}/ratings")]
         public IActionResult PostRating(int id, [FromBody] Rating rating)
         {
-          var item = new Item("Shirt", "Ohio State shirt.", "Nike", 29.99m);
-          item.Id = id;
-          item.AddRating(rating);
+            var item = _db.Items.Find(id);
 
-          return Ok(item);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            item.AddRating(rating);
+            _db.SaveChanges();
+
+            return Ok(item);
         }
 
         [HttpPut("{id:int}")]
-        public IActionResult Put(int id, Item item)
+        public IActionResult PutItem(int id, [FromBody] Item item)
         {
-          return NoContent();
+            if (id != item.Id)
+            {
+                return BadRequest();
+            }
+
+            var existingItem = _db.Items.Find(id);
+
+            if (existingItem == null)
+            {
+                return NotFound();
+            }
+
+            existingItem.Name = item.Name;
+            existingItem.Description = item.Description;
+            existingItem.Brand = item.Brand;
+            existingItem.Price = item.Price;
+
+            _db.SaveChanges();
+
+            return NoContent();
         }
 
         [HttpDelete("{id:int}")]
-        public IActionResult Delete(int id)
+        public IActionResult DeleteItem(int id)
         {
-          return NoContent();
+            var item = _db.Items.Find(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            _db.Items.Remove(item);
+            _db.SaveChanges();
+
+            return NoContent();
         }
 
     }
