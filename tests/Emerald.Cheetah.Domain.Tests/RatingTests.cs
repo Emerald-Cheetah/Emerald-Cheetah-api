@@ -1,7 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Emerald.Cheetah.Domain;
 using Emerald.Cheetah.Domain.Catalog;
-namespace Emerald_Cheetah.Domain.Tests;
+namespace Emerald.Cheetah.Domain.Tests;
 
 [TestClass]
 public class RatingTests
@@ -21,11 +22,13 @@ public class RatingTests
     }
 
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
+    //[ExpectedException(typeof(ArgumentException))]
     public void Cannot_Create_Rating_With_Invalid_Stars()
     {
         // Arrange
-        var rating = new Rating(0, "Mike", "Great fit!");
+        //var rating = new Rating(0, "Mike", "Great fit!");
+        Assert.Throws<ArgumentException>(() => new Rating(0, "Mike", "Great fit!"));
+
 
     }
 }
