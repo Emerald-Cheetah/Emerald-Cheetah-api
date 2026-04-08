@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/Emerald_Cheetah.Domain.Tests/Emerald_Cheetah.Domain.Tests.csproj" />
+  </Folder>
   <Project Path="Emerald.Cheetah.Api/Emerald.Cheetah.Api.csproj" />
   <Project Path="Emerald.Cheetah.Data/Emerald.Cheetah.Data.csproj" />
   <Project Path="Emerald.Cheetah.Domain/Emerald.Cheetah.Domain.csproj" />
