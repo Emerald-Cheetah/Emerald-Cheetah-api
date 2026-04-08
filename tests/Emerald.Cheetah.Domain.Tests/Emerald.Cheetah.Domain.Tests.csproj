@@ -15,4 +15,8 @@
     <Using Include="Microsoft.VisualStudio.TestTools.UnitTesting" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Emerald.Cheetah.Domain\Emerald.Cheetah.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
