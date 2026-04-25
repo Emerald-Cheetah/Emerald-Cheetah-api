@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Emerald.Cheetah.Domain.Catalog;
 using Emerald.Cheetah.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Emerald.Cheetah.Api.Controllers
 {
@@ -84,6 +85,7 @@ namespace Emerald.Cheetah.Api.Controllers
         }
 
         [HttpDelete("{id:int}")]
+        [Authorize("delete:catalog")]
         public IActionResult DeleteItem(int id)
         {
             var item = _db.Items.Find(id);
