@@ -3,4 +3,19 @@
 GET {{Emerald.Cheetah.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
+DELETE https://localhost:7250/catalog/3
+
 ###
+curl --request POST \
+  --url https://dev-ovodle7wrwu14mdi.us.auth0.com/oauth/token \
+  --header 'content-type: application/json' \
+  --data '{
+    "client_id":"tDDmnfcHUNZrpF152nIBROcej0KEb1s9",
+    "client_secret":"YOUR_CLIENT_SECRET_HERE",
+    "audience":"https://emerald-cheetah",
+    "grant_type":"client_credentials"
+  }'
+
+curl --request DELETE \
+  --url https://localhost:7250/catalog/3 \
+  --header 'authorization: Bearer {PUT_YOUR_TOKEN_HERE}' 
