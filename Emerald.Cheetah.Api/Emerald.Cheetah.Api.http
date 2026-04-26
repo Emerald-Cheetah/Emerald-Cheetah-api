@@ -11,7 +11,7 @@ curl --request POST \
   --header 'content-type: application/json' \
   --data '{
     "client_id":"tDDmnfcHUNZrpF152nIBROcej0KEb1s9",
-    "client_secret":"mFMvJ0oozAn6KJ2S396i9D1eXEeBDDu316IqsQObBz9e4D9He0qE7sWm_eb5QItt",
+    "client_secret":"YOUR_CLIENT_SECRET_HERE",
     "audience":"https://emerald-cheetah",
     "grant_type":"client_credentials"
   }'
